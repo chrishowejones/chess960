@@ -21,19 +21,20 @@
 
 (defn c960
   "Return a legal rank for c960 chess"
-  []
-  (->> #(shuffle starting-rank)
-       repeatedly
-       (filter #(and (king-legal? %) (bishops-legal? %)))
-       (take 1)
-       first
-       (s/join ", ")))
+  ([] (c960 1))
+  ([n]
+   (->> #(shuffle starting-rank)
+        repeatedly
+        (filter #(and (king-legal? %) (bishops-legal? %)))
+        (take n)
+        (map #(s/join ", " %)))))
 
 
 (comment
 
   (c960)
   ;; => "♗, ♗, ♕, ♘, ♘, ♖, ♔, ♖"
-
+  (c960 3)
+  ;; => ("♗, ♖, ♘, ♕, ♔, ♘, ♖, ♗" "♖, ♔, ♗, ♖, ♘, ♗, ♕, ♘" "♖, ♘, ♔, ♖, ♘, ♗, ♗, ♕")
 
   )
