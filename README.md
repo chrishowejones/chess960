@@ -1,7 +1,7 @@
 # c960
 
 Code to answer the
-[C960 Chess problem(http://rosettacode.org/wiki/Generate_Chess960_starting_position#Clojure)]
+[C960 Chess problem](http://rosettacode.org/wiki/Generate_Chess960_starting_position#Clojure)
 in RosettaCode.org.
 
 Task
