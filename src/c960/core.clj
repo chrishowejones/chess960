@@ -3,17 +3,17 @@
   (:require [clojure.string :as s]))
 
 ;; legal starting rank - unicode chars for rook, knight, bishop, queen, king, bishop, knight, rook
-(def starting-rank [\u2656 \u2658 \u2657 \u2655 \u2654 \u2657 \u2658 \u2656])
+(def starting-rank [\♖ \♘ \♗ \♕ \♔ \♗ \♘ \♖])
 
 (defn bishops-legal?
   "True if Bishops are odd number of indicies apart"
   [rank]
-  (odd? (apply - (cons 0 (sort > (keep-indexed #(when (= \u2657 %2) %1) rank))))))
+  (odd? (apply - (cons 0 (sort > (keep-indexed #(when (= \♗ %2) %1) rank))))))
 
 (defn king-legal?
   "True if the king is between two rooks"
   [rank]
-  (let [king-&-rooks (filter #{\u2654 \u2656} rank)]
+  (let [king-&-rooks (filter #{\♔ \♖} rank)]
     (and
      (= 3 (count king-&-rooks))
      (= \u2654 (second king-&-rooks)))))
